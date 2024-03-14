@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<head>
+  <meta charset="utf-8">
+  <title> NOC Apllication Form </title>
+  <link rel="stylesheet" id="themeStylesheet" type="text/css" href="{{ url_for('static', filename="home-dark.css") }}"/>
+</head>
+<div class="formbold-main-wrapper">
+  <div class="formbold-form-wrapper">
+    
+
+    <center><h1>NOC Application Form</h1><br> <hr color></center><br><br>
+    
+
+    <form action=" {{ url_for('.nocreq') }}" method="POST">
+      <div class="formbold-input-flex">
+        <div>
+          <label class="formbold-form-label">Title</label>
+
+          <select class="formbold-form-input" name="title" id="title">
+          <!--<option value="null">--Branch--</option>-->
+          <option value="" disabled selected>Select</option>
+          <option value="Mr.">Mr.</option>
+          <option value="Ms.">Ms.</option>
+          </select>
+      </div>
+
+        <div>
+          <label for="name" class="formbold-form-label"> Name </label>
+          <input
+            type="text"
+            name="name"
+            id="name"
+            placeholder="Full Name"
+            class="formbold-form-input"
+            required
+          />
+        </div>
+
+        <div>
+          <label for="rollno" class="formbold-form-label"> Roll Number </label>
+          <input
+            type="text"
+            name="rollno"
+            id="rollno"
+            placeholder="Roll Number"
+            class="formbold-form-input"
+          />
+        </div>
+      </div>
+
+      <div class="formbold-input-flex">
+        <div>
+          <label for="phone" class="formbold-form-label"> Phone Number </label>
+            <input
+              type="text"
+              name="phone"
+              id="phone"
+              placeholder="+91"
+              class="formbold-form-input"
+            />
+        </div>
+
+        <div>
+            <label class="formbold-form-label">Branch</label>
+
+            <select class="formbold-form-input" name="branch" id="branch">
+            <!--<option value="null">--Branch--</option>-->
+            <option value="" disabled selected>Select</option>
+            <option value="bece">BE ECE</option>
+            <option value="benc">BE ENC</option>
+            <option value="bvlsi">BE VLSI</option>
+            <option value="mece">ME ECE</option>
+            <option value="mvlsi">ME VLSI</option>
+            <option value="others">Others</option>
+            </select>
+        </div>
+      </div>
+
+      <div class="formbold-mb-3 formbold-input-wrapp">
+        <label for="phone" class="formbold-form-label"> Email Address </label>
+
+        <div>
+          <input
+            type="email"
+            name="email"
+            id="email"
+            placeholder="Personal Email Address"
+            class="formbold-form-input"
+          />
+        </div>
+      </div>
+
+      <div class="formbold-mb-3">
+        <label for="age" class="formbold-form-label"> Company Name </label>
+        <input
+          type="text"
+          name="companyname"
+          id="companyname"
+          placeholder="Name of the Company"
+          class="formbold-form-input"
+        />
+      </div>
+
+      <div class="formbold-mb-3">
+        <label for="address" class="formbold-form-label"> Company Location </label>
+
+        <input
+          type="text"
+          name="companyloc"
+          id="companyloc"
+          placeholder="Address of Company"
+          class="formbold-form-input"
+        />
+      </div>
+
+      <div class="formbold-mb-3 formbold-input-wrapp">
+        <label for="phone" class="formbold-form-label"> Person of Contact </label>
+
+        <div>
+          <input
+            type="text"
+            name="pocname"
+            id="pocname"
+            placeholder="Full Name"
+            class="formbold-form-input"
+          />
+
+          <input
+            type="text"
+            name="pocphone"
+            id="pocphone"
+            placeholder="Phone number"
+            class="formbold-form-input"
+          />
+        </div>
+      </div>
+
+      <!--<div class="formbold-mb-3">
+        <label for="dob" class="formbold-form-label"> Joining Date </label>
+        <input type="date" name="dob" id="dob" class="formbold-form-input" />
+      </div>
+
+      <div class="formbold-mb-3">
+        <label for="message" class="formbold-form-label">
+          Cover Letter
+        </label>
+        <textarea
+          rows="6"
+          name="message"
+          id="message"
+          class="formbold-form-input"
+        ></textarea>
+      </div>
+
+      <div class="formbold-form-file-flex">
+        <label for="upload" class="formbold-form-label">
+          Upload Resume
+        </label>
+        <input
+          type="file"
+          name="upload"
+          id="upload"
+          class="formbold-form-file"
+        />
+      </div>-->
+
+      <button type="Submit" class="formbold-btn">Submit</button>
+    </form>
+  </div>
+</div>

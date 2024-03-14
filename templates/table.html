@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>NOC Form Data</title>
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #1e1e1e;
+            color: #ffffff;
+            margin: 20px;
+        }
+
+        h1 {
+            text-align: center;
+            color: #ffffff;
+        }
+
+        form {
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+            max-width: 800px;
+            margin: 0 auto; /* Center the form horizontally */
+        }
+
+        label {
+            color: #ffffff;
+            font-weight: 500;
+            font-size: 14px;
+            line-height: 24px;
+            display: block;
+        }
+
+        input,
+        select,
+        button {
+            width: 50%;
+            padding: 13px 22px;
+            border-radius: 5px;
+            border: 1px solid #444;
+            background: #333;
+            font-weight: 500;
+            font-size: 16px;
+            color: #ffffff;
+            align-self: center;
+            outline: none;
+            resize: none;
+            cursor: pointer;
+        }
+
+        input::placeholder,
+        select,
+        [type='date']::-webkit-datetime-edit-text,
+        [type='date']::-webkit-datetime-edit-month-field,
+        [type='date']::-webkit-datetime-edit-day-field,
+        [type='date']::-webkit-datetime-edit-year-field {
+            color: rgba(255, 255, 255, 0.5);
+        }
+
+        input:focus {
+            border-color: #6a64f1;
+            box-shadow: 0px 3px 8px rgba(0, 0, 0, 0.3);
+        }
+
+        button:hover {
+            box-shadow: 0px 3px 8px rgba(0, 0, 0, 0.3);
+        }
+
+        .export-btn {
+            background-color: #4CAF50;
+            width: 100%;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 20px;
+        }
+
+        th,
+        td {
+            border: 1px solid #444;
+            padding: 10px;
+            text-align: left;
+        }
+
+        th {
+            background-color: #333;
+            color: #fff;
+        }
+    </style>
+</head>
+
+<body>
+    <h1>NOC Form Responses</h1>
+    <form method="POST" action="{{ url_for('display_table_entries') }}">
+        <!--<label for="table_selector">Select Branch:</label>-->
+        <select id="table_selector" name="table_selector">
+            <option value="#" selected disabled>Select Branch</option>
+            {% for table in tables %}
+            <option value="{{ table }}">{{ table }}</option>
+            {% endfor %}
+        </select>
+        <button type="submit" class="formbold-btn">Display</button>
+    </form>
+    {% if data %}
+    <h2><center>Responses for {{ table_name }}</center></h2>
+    <button class="formbold-btn export-btn"
+        onclick="window.location.href='{{ url_for('export_to_excel_route', table_name=table_name) }}'">Export
+        to Excel</button>
+    <table>
+        <thead>
+            <tr>
+                <th>S. No.</th>
+                <th>Date</th>
+                <th>Ref No. 1</th>
+                <th>Ref No. 2</th>
+                <th>Name</th>
+                <th>Roll No.</th>
+                <th>Branch</th>
+                <th>Phone</th>
+                <th>Email</th>
+                <th>Company Name</th>
+                <th>Company Location</th>
+                <th>POC Name</th>
+                <th>POC Phone</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for entry in data %}
+            <tr>
+                <td>{{ entry.ref_no2 }}</td>
+                <td>{{ entry.date }}</td>
+                <td>{{ entry.ref_no1 }}</td>
+                <td>{{ entry.ref_no2 }}</td>
+                <td>{{ entry.name }}</td>
+                <td>{{ entry.rollno }}</td>
+                <td>{{ entry.branch }}</td>
+                <td>{{ entry.phone }}</td>
+                <td>{{ entry.email }}</td>
+                <td>{{ entry.compname }}</td>
+                <td>{{ entry.comploc }}</td>
+                <td>{{ entry.pocname }}</td>
+                <td>{{ entry.pocphone }}</td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+    {% endif %}
+</body>
+
+</html>
